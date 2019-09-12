@@ -11,5 +11,10 @@ Install node-sass: npm install node-sass
 # React Routing
 npm i react-router-dom
 
+# NPM - Bootstrap, Jquery, Popper
+https://www.npmjs.com/package/bootstrap <br/>
+https://www.npmjs.com/package/jquery <br/>
+https://www.npmjs.com/package/popper.js/v/1.14.3
+
 # Axios for HTTP Requests
 https://alligator.io/react/axios-react/
