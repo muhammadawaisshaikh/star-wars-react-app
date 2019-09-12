@@ -1,0 +1,37 @@
+@import 'mixins';
+
+// google fonts
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body{
+  overflow-x: hidden !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden !important;
+}
+
+$black: #1f1f1f;
+$white: #ffffff;
+
+ul{
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.imageProps{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.green{
+  color: green;
+}
+
+.relative{
+  position: relative;
+}
