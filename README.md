@@ -5,5 +5,8 @@ Consume the Star Wars API (SWAPI) using React and other JS technologies you deem
 # Refrence
 https://github.com/facebook/create-react-app
 
+# Node Sass
+Install node-sass: npm install node-sass
+
 # Axios for HTTP Requests
 https://alligator.io/react/axios-react/
