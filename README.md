@@ -8,5 +8,8 @@ https://github.com/facebook/create-react-app
 # Node Sass
 Install node-sass: npm install node-sass
 
+# React Routing
+npm i react-router-dom
+
 # Axios for HTTP Requests
 https://alligator.io/react/axios-react/
