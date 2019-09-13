@@ -39,6 +39,12 @@ export default class Home extends React.Component {
     console.log(this.items);
 
     alert(event.title+' Film Marked as Favourite');
+
+    // update state with newly marked favourite films 
+    this.setState(prevState => ({
+      data: [ event, ...prevState.data]
+    }));
+
   };
 
   render() {
