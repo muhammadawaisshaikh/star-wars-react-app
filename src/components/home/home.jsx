@@ -3,7 +3,6 @@ import "./home.scss";
 
 import axios from "axios";
 import FilterResults from 'react-filter-search';
-import {reactLocalStorage} from 'reactjs-localstorage';
 
 export default class Home extends React.Component {
 
@@ -38,6 +37,8 @@ export default class Home extends React.Component {
     this.items.push(event);
     localStorage.setItem('items', JSON.stringify(this.items));
     console.log(this.items);
+
+    alert(event.title+' Film Marked as Favourite');
   };
 
   render() {
