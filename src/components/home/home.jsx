@@ -2,42 +2,61 @@ import React from "react";
 import "./home.scss";
 
 import axios from "axios";
+import FilterResults from 'react-filter-search';
 
 export default class Home extends React.Component {
 
-  state = {
-    films : []        
-  };
-
-  componentDidMount() {
-    axios.get(`https://swapi.co/api/films`).then(res => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      value: ''
+    };
+  }
+  componentWillMount() {
+      axios.get(`https://swapi.co/api/films`).then(res => {
       const films = res.data.results;
 
       console.log(films);
 
       this.setState({
-        films: films
+        data: films
       });
-
     });
+
   }
 
+  handleChange = event => {
+    const { value } = event.target;
+    this.setState({ value });
+  };
+
   render() {
-    const films = this.state.films;
+    const { data, value } = this.state;
     return (
         <React.Fragment>
-  
-        <div className="home">
-        {
-          films.map((value, index) => {
-          return <div className="film border-bottom" key={index}>
-                    <div className="companyLogo imageProps" style={{ backgroundImage: 'url('+value.imgUrl+')' }}></div>
+
+        <div>
+
+        <div className="form-group">
+          <input type="text" value={value} onChange={this.handleChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search Film" />
+        </div>
+
+          <FilterResults
+            value={value}
+            data={data}
+            renderResults={results => (
+              <div>
+                {results.map((value, index) => (
+                  <div  className="film border-bottom" key={index}>
                     <h3><b>{value.title}</b></h3>
                     <p className="py-2">{value.release_date}</p>
                     <p>{value.opening_crawl}</p>
                   </div>
-          })
-        }
+                ))}
+              </div>
+            )}
+          />
         </div>
 
         </React.Fragment>

@@ -18,3 +18,7 @@ https://www.npmjs.com/package/popper.js/v/1.14.3
 
 # Axios for HTTP Requests
 https://alligator.io/react/axios-react/
+
+# react filter search
+https://www.npmjs.com/package/react-filter-search <br/>
+npm i react-filter-search
