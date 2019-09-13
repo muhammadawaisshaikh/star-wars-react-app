@@ -10,6 +10,7 @@ export default class Home extends React.Component {
     super(props);
     this.state = {
       data: [],
+      favourites: [],
       value: ''
     };
   }
@@ -20,8 +21,10 @@ export default class Home extends React.Component {
       console.log(films);
 
       this.setState({
-        data: films
+        data: films,
+        favourites: JSON.parse(localStorage.getItem("items"))
       });
+      console.log(this.state.favourites);
     });
 
   }
@@ -41,9 +44,9 @@ export default class Home extends React.Component {
     alert(event.title+' Film Marked as Favourite');
 
     // update state with newly marked favourite films 
-    this.setState(prevState => ({
-      data: [ event, ...prevState.data]
-    }));
+    // this.setState(prevState => ({
+    //   data: [ event, ...prevState.data]
+    // }));
 
   };
 
@@ -57,6 +60,18 @@ export default class Home extends React.Component {
         <div className="form-group">
           <input type="text" value={value} onChange={this.handleChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search Film" />
         </div>
+
+        {/* showing favourited items from localStorage  */}
+        {
+          this.state.favourites.map((value, index) => {
+          return <div className="film border-bottom" key={index}>
+                  <a onClick={() => this.markFav(value)} className="badge badge-pill badge-danger py-2 px-4 mt-2 float-right">Remove Favourite</a>
+                  <h3><b>{value.title}</b></h3>
+                  <p className="py-2">{value.release_date}</p>
+                  <p>{value.opening_crawl}</p>
+                </div>
+          })
+        }
 
           <FilterResults
             value={value}
