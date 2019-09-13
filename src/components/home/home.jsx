@@ -28,27 +28,16 @@ export default class Home extends React.Component {
         <React.Fragment>
   
         <div className="home">
-          <div className="row">
-          {
-            films.map((value, index) => {
-            return <div className="col-sm-6 py-3" key={index}>
-                      <div className="card text-center">
-                        <div className="card-header">
-                        {value.title} <b>Movie</b>
-                        </div>
-                        <div className="card-body">
-                          <h5 className="card-title"><b>{value.title}</b></h5>
-                          <p className="card-text">{value.opening_crawl}</p>
-                          <a href="#" className="btn btn-primary">More Details</a>
-                        </div>
-                        <div className="card-footer text-muted">
-                          <b>Release Date:</b> {value.release_date}
-                        </div>
-                      </div>
-                    </div>
-            })
-          }
-          </div>
+        {
+          films.map((value, index) => {
+          return <div className="film border-bottom" key={index}>
+                    <div className="companyLogo imageProps" style={{ backgroundImage: 'url('+value.imgUrl+')' }}></div>
+                    <h3><b>{value.title}</b></h3>
+                    <p className="py-2">{value.release_date}</p>
+                    <p>{value.opening_crawl}</p>
+                  </div>
+          })
+        }
         </div>
 
         </React.Fragment>

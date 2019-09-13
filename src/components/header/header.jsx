@@ -11,7 +11,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="top-bar py-3 px-5 bg-light border-bottom">
+        <div className="top-bar py-3 px-5 my-3 bg-light border-bottom">
           <div className="row">
             <div className="col-md-3">
               <h3>Star Wars <b>App</b></h3>
