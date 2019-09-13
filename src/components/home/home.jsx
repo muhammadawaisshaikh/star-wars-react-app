@@ -3,6 +3,7 @@ import "./home.scss";
 
 import axios from "axios";
 import FilterResults from 'react-filter-search';
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 export default class Home extends React.Component {
 
@@ -31,6 +32,14 @@ export default class Home extends React.Component {
     this.setState({ value });
   };
 
+  // mark favourite
+  items = [];
+  markFav(event) {
+    this.items.push(event);
+    localStorage.setItem('items', JSON.stringify(this.items));
+    console.log(this.items);
+  };
+
   render() {
     const { data, value } = this.state;
     return (
@@ -48,7 +57,8 @@ export default class Home extends React.Component {
             renderResults={results => (
               <div>
                 {results.map((value, index) => (
-                  <div  className="film border-bottom" key={index}>
+                  <div className="film border-bottom" key={index}>
+                    <a onClick={() => this.markFav(value)} className="badge badge-pill badge-success py-2 px-4 mt-2 float-right">Mark Favourite</a>
                     <h3><b>{value.title}</b></h3>
                     <p className="py-2">{value.release_date}</p>
                     <p>{value.opening_crawl}</p>
