@@ -47,8 +47,18 @@ export default class Home extends React.Component {
     this.setState({
       favourites: JSON.parse(localStorage.getItem("items"))
     });
+  }
 
-  };
+  // remove favrourite
+  removeFav(index){
+    var items = JSON.parse(localStorage.getItem("items")).splice(index, 1);
+    localStorage.setItem('items', JSON.stringify(items));
+    
+    // update state with newly marked favourite films
+    this.setState({
+      favourites: JSON.parse(localStorage.getItem("items"))
+    });
+  }
 
   render() {
     const { data, value } = this.state;
@@ -64,7 +74,7 @@ export default class Home extends React.Component {
           {
             this.state.favourites.map((value, index) => {
               return <div className="film border-bottom" key={index}>
-                    <a onClick={() => this.markFav(value)} className="badge badge-pill badge-danger py-2 px-4 mt-2 float-right">Remove Favourite</a>
+                    <a onClick={() => this.removeFav(index)} className="badge badge-pill badge-danger py-2 px-4 mt-2 float-right">Remove Favourite</a>
                     <h3><b>{value.title}</b></h3>
                     <p className="py-2">{value.release_date}</p>
                     <p>{value.opening_crawl}</p>
