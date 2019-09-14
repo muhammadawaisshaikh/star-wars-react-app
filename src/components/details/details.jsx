@@ -27,11 +27,17 @@ export default class Details extends React.Component {
 
 }
 
+goBack() {
+    window.history.back();
+}
+
   render() {
     const data = this.state.data;
     if (this.state.loading === 1) {
         return (
             <React.Fragment>
+
+            <a className="btn btn-info" onClick={() => this.goBack()}>Go Back</a>    
     
             <div>
                 <h4>Film Name: {data.title} <span className="float-right">{data.director}</span></h4>
