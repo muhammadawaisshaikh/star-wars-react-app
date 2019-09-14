@@ -38,6 +38,7 @@ goBack() {
             <React.Fragment>
 
             <a className="btn btn-info" onClick={() => this.goBack()}>Go Back</a>    
+            <hr/>
     
             <div>
                 <h4>Film Name: {data.title} <span className="float-right">{data.director}</span></h4>
