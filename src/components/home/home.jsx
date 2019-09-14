@@ -3,6 +3,7 @@ import "./home.scss";
 
 import axios from "axios";
 import FilterResults from 'react-filter-search';
+import { HashLink as Link } from 'react-router-hash-link';
 
 export default class Home extends React.Component {
 
@@ -78,7 +79,7 @@ export default class Home extends React.Component {
                     <h3><b>{value.title}</b></h3>
                     <p className="py-2">{value.release_date}</p>
                     <p>{value.opening_crawl}</p>
-                    <a className="btn btn-primary mt-3">View Details</a>
+                    <Link className="btn btn-primary mt-3" to="/details">View Details</Link>
                   </div>
               })
           }
@@ -94,7 +95,7 @@ export default class Home extends React.Component {
                     <h3><b>{value.title}</b></h3>
                     <p className="py-2">{value.release_date}</p>
                     <p>{value.opening_crawl}</p>
-                    <a className="btn btn-primary mt-3">View Details</a>
+                    <Link className="btn btn-primary mt-3" to="/details">View Details</Link>
                   </div>
                 ))}
               </div>
