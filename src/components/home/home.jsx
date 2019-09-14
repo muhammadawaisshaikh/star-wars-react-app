@@ -52,18 +52,22 @@ export default class Home extends React.Component {
 
   // remove favrourite
   removeFav(index){
-    var items = JSON.parse(localStorage.getItem("items")).splice(index, 1);
-    localStorage.setItem('items', JSON.stringify(items));
-    
-    // update state with newly marked favourite films
-    this.setState({
-      favourites: JSON.parse(localStorage.getItem("items"))
-    });
+
+      var items = JSON.parse(localStorage.getItem("items")).splice(index, 1);
+      localStorage.setItem('items', JSON.stringify(items));
+      
+      // update state with newly marked favourite films
+      this.setState({
+        favourites: JSON.parse(localStorage.getItem("items"))
+      });
+
+    console.log(index);
   }
 
   render() {
     const { data, value } = this.state;
-    return (
+    if (this.state.favourites !== null) {
+      return (
         <React.Fragment>
 
         <div>
@@ -105,5 +109,38 @@ export default class Home extends React.Component {
 
         </React.Fragment>
       );
+    }
+    else {
+      return (
+        <React.Fragment>
+
+        <div>
+
+        <div className="form-group">
+          <input type="text" value={value} onChange={this.handleChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search Film" />
+        </div>
+
+          <FilterResults
+            value={value}
+            data={data}
+            renderResults={results => (
+              <div>
+                {results.map((value, index) => (
+                  <div className="film border-bottom" key={index}>
+                    <a onClick={() => this.markFav(value)} className="badge badge-pill badge-success py-2 px-4 mt-2 float-right">Mark Favourite</a>
+                    <h3><b>{value.title}</b></h3>
+                    <p className="py-2">{value.release_date}</p>
+                    <p>{value.opening_crawl}</p>
+                    <Link className="btn btn-primary mt-3" to="/details">View Details</Link>
+                  </div>
+                ))}
+              </div>
+            )}
+          />
+        </div>
+
+        </React.Fragment>
+      );
+    }
   }
 }
