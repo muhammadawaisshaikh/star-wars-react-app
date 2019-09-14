@@ -64,6 +64,10 @@ export default class Home extends React.Component {
     console.log(index);
   }
 
+  passUrl(url) {
+    localStorage.setItem('url', url);
+  }
+
   render() {
     const { data, value } = this.state;
     if (this.state.favourites !== null) {
@@ -83,7 +87,7 @@ export default class Home extends React.Component {
                     <h3><b>{value.title}</b></h3>
                     <p className="py-2">{value.release_date}</p>
                     <p>{value.opening_crawl}</p>
-                    <Link className="btn btn-primary mt-3" to="/details">View Details</Link>
+                    <Link className="btn btn-primary mt-3" to="/details" onClick={() => this.passUrl(value.url)}>View Details</Link>
                   </div>
               })
           }
@@ -99,7 +103,7 @@ export default class Home extends React.Component {
                     <h3><b>{value.title}</b></h3>
                     <p className="py-2">{value.release_date}</p>
                     <p>{value.opening_crawl}</p>
-                    <Link className="btn btn-primary mt-3" to="/details">View Details</Link>
+                    <Link className="btn btn-primary mt-3" to="/details" onClick={() => this.passUrl(value.url)}>View Details</Link>
                   </div>
                 ))}
               </div>

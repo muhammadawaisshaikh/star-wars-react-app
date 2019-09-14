@@ -14,7 +14,7 @@ export default class Details extends React.Component {
   }
 
   componentWillMount() {
-    axios.get(`https://swapi.co/api/films/1`).then(res => {
+    axios.get(localStorage.getItem('url')).then(res => {
     const film = res.data;
 
     console.log(film);
