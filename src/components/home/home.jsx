@@ -78,6 +78,7 @@ export default class Home extends React.Component {
                     <h3><b>{value.title}</b></h3>
                     <p className="py-2">{value.release_date}</p>
                     <p>{value.opening_crawl}</p>
+                    <a className="btn btn-primary mt-3">View Details</a>
                   </div>
               })
           }
@@ -93,6 +94,7 @@ export default class Home extends React.Component {
                     <h3><b>{value.title}</b></h3>
                     <p className="py-2">{value.release_date}</p>
                     <p>{value.opening_crawl}</p>
+                    <a className="btn btn-primary mt-3">View Details</a>
                   </div>
                 ))}
               </div>

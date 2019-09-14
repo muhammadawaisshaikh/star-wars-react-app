@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 // components
 import Header from './components/header/header.jsx';
 import Home from './components/home/home.jsx';
+import Details from './components/details/details.jsx';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             
           <Switch>
             <Route exact path="/home" component={Home}/>
+            <Route exact path="/details" component={Details}/>
           </Switch>
         </div>
       </BrowserRouter>
