@@ -69,12 +69,20 @@ export default class Home extends React.Component {
   }
 
   render() {
+
     const { data, value } = this.state;
+    const mainSlide = "https://www.movienewsletters.net/media/slider/1200x444/249997.jpg";
+    const avatarFilm = "https://scitechdaily.com/images/Star-Wars-The-Rise-of-Skywalker.jpg";
+
     if (this.state.favourites !== null) {
       return (
         <React.Fragment>
 
         <div>
+
+        <div className="main-slide">
+          <img src={mainSlide} alt="Star Wars"/>
+        </div>
 
         <div className="form-group">
           <input type="text" value={value} onChange={this.handleChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search Film" />
@@ -82,13 +90,24 @@ export default class Home extends React.Component {
 
           {
             this.state.favourites.map((value, index) => {
-              return <div className="film border-bottom" key={index}>
-                    <a onClick={() => this.removeFav(index)} className="badge badge-pill badge-danger py-2 px-4 mt-2 float-right">Remove Favourite</a>
-                    <h3><b>{value.title}</b></h3>
-                    <p className="py-2">{value.release_date}</p>
-                    <p>{value.opening_crawl}</p>
-                    <Link className="btn btn-primary mt-3" to="/details" onClick={() => this.passUrl(value.url)}>View Details</Link>
+              return (
+                  <div className="film border-bottom" key={index}>
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-3">
+                          <img className="film-avatar" src={avatarFilm} alt="Star Wars"/>
+                        </div>
+                        <div className="col-9">
+                          <a onClick={() => this.removeFav(index)} className="badge badge-pill badge-danger py-2 px-4 mt-2 float-right">Remove Favourite</a>
+                          <h3><b>{value.title}</b></h3>
+                          <p className="py-2">{value.release_date}</p>
+                          <p>{value.opening_crawl}</p>
+                          <Link className="btn btn-primary mt-3" to="/details" onClick={() => this.passUrl(value.url)}>View Details</Link>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                );
               })
           }
 
@@ -99,11 +118,20 @@ export default class Home extends React.Component {
               <div>
                 {results.map((value, index) => (
                   <div className="film border-bottom" key={index}>
-                    <a onClick={() => this.markFav(value)} className="badge badge-pill badge-success py-2 px-4 mt-2 float-right">Mark Favourite</a>
-                    <h3><b>{value.title}</b></h3>
-                    <p className="py-2">{value.release_date}</p>
-                    <p>{value.opening_crawl}</p>
-                    <Link className="btn btn-primary mt-3" to="/details" onClick={() => this.passUrl(value.url)}>View Details</Link>
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-3">
+                          <img className="film-avatar" src={avatarFilm} alt="Star Wars"/>
+                        </div>
+                        <div className="col-9">
+                          <a onClick={() => this.markFav(value)} className="badge badge-pill badge-success py-2 px-4 mt-2 float-right">Mark Favourite</a>
+                          <h3><b>{value.title}</b></h3>
+                          <p className="py-2">{value.release_date}</p>
+                          <p>{value.opening_crawl}</p>
+                          <Link className="btn btn-primary mt-3" to="/details" onClick={() => this.passUrl(value.url)}>View Details</Link>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
